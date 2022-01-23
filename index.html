@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Math Website</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<style type="text/css">
+		footer{
+			margin-top: 200px;
+    background: #111;
+    padding: 15px 23px;
+    color: #fff;
+    text-align: center;
+}
+footer span a{
+    color: crimson;
+    text-decoration: none;
+}
+footer span a:hover{
+    text-decoration: underline;
+}
+
+	</style>
+</head>
+<body>	
+	<!--  Navbar Section   -->
+	 <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" style="font-size: 29px"><i class="fa fa-code" style="font-size:36px;color:red"></i>&nbsp;Math Code</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mynavbar">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link" onclick="isCheckPrime()">Check Prime</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" onclick="squareroot()">Square Root</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" onclick="cuberoot()">Cube Root</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" onclick="factorial()">Factorial</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" onclick="fibonacci()">Fibonacci Series</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav> 
+
+ <form style="padding: 100px; margin-left: 300px;">
+  <div class="mb-3 mt-3">
+    <label for="email" style="font-size:20px;" class="form-label" name="numberlabel" ><b>Enter the Number:</b></label>
+    <input  type="number" class="form-control" required="Enter the number" id="number" style="width: 400px; border: solid 1px black;" placeholder="Enter the Number" name="num">
+  </div>
+  <label id="ans" style="color: red; font-style: verdana;"></label>
+</form> 
+<script type="text/javascript">
+	 var num = null;
+	 
+	function isCheckPrime() {
+		num = document.getElementById('number').value;
+		let isPrime = true;
+
+		if (num === 1) {
+    		console.log("1 is neither prime nor composite number.");
+    		document.getElementById("ans").innerHTML = "1 is neither prime nor composite number.";
+		}
+
+		else if (num > 1) {
+
+		    for (let i = 2; i < num; i++) {
+        		if (num % i == 0) {
+           			 isPrime = false;
+            	break;
+        	}
+    	}
+
+    		if (isPrime) {
+       			 console.log(`${num} is a prime number`);
+    			 document.getElementById("ans").innerHTML = `${num} is a prime number`;
+    		} else {
+       			 console.log(`${num} is a not prime number`);
+    			 document.getElementById("ans").innerHTML = `${num} is a not prime number`;
+    		}
+		}
+	else {
+    	console.log("The number is not a prime number.");
+        document.getElementById("ans").innerHTML = "The number is not a prime number.";
+	}
+
+	}
+	function squareroot(){
+		num = document.getElementById('number').value;
+		const squarero = Math.sqrt(num);
+        document.getElementById("ans").innerHTML = `${squarero} is squareroot of ${num}`;		
+	}
+
+	function cuberoot(){
+		num = document.getElementById('number').value;
+		const cubero = Math.cbrt(num);
+		console.log(cubero);
+        document.getElementById("ans").innerHTML = `${cubero} is cube root of ${num}`;	
+	}
+	function factorial(){
+		num = document.getElementById('number').value;
+		var fact=1,i;
+		for(i = 1; i<=num; i++){
+			fact = fact*i;
+		}
+		document.getElementById("ans").innerHTML = `${fact} is factorial of ${num}`;
+	}
+	function fibonacci(){
+		num = document.getElementById('number').value;
+		var i,first=0,second=1,sum;
+		document.getElementById("ans").innerHTML = `${first}`;
+		document.getElementById("ans").innerHTML = `${second}`;
+		for(i=3; i<=num; i++){
+			sum = first + second;
+			document.getElementById("ans").innerHTML = `${sum}`;
+			first = second;
+			second = sum;
+		}
+
+	}
+</script>
+  <footer>
+        <span>Created By <a href="#">Tejas Patil</a> | <span class="fa fa-copyright"></span> 2021 All rights reserved.</span>
+    </footer>
+</body>
+</html>
